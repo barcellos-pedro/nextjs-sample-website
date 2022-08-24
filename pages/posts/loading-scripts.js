@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import Script from 'next/script'
 import { useState } from 'react'
-import Layout from '../../components/layout'
+
+import Script from 'next/script'
+import Layout from '../../components/layout/layout'
 
 export default function FirstPost() {
   const [message, setMessage] = useState('')

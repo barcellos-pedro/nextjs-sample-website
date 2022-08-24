@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Layout from '../../components/layout'
+import Layout from '../../components/layout/layout'
 
 export default function FirstPost() {
   return (
