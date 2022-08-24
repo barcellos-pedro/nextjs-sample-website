@@ -1,13 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import Date from '../components/date'
-
+import { getSortedPostsData } from '../lib/posts'
 import Layout, { siteTitle } from '../components/layout/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
+import PostsList from '../components/posts-list/posts-lists'
 
-export default function Home({ allPostsData }) {
+export default function Home({ posts }) {
   return (
     <Layout home>
       <Head>
@@ -23,22 +22,12 @@ export default function Home({ allPostsData }) {
       </section>
 
       {/* Posts List */}
-      {!allPostsData?.length > 0 ? (
+      {!posts?.length > 0 ? (
         <h2>No posts yet.</h2>
       ) : (
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>Posts</h2>
-          <ul className={utilStyles.list}>
-            {allPostsData.map(({ id, date, title }) => (
-              <li className={utilStyles.listItem} key={id}>
-                <Link href={`/posts/${id}`}>{title}</Link>
-                <br />
-                <small className={utilStyles.lightText}>
-                  <Date dateString={date} />
-                </small>
-              </li>
-            ))}
-          </ul>
+          <PostsList posts={posts} />
         </section>
       )}
     </Layout>
@@ -49,10 +38,10 @@ export default function Home({ allPostsData }) {
  * Get data at build time and then send as props to Home component
  */
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const posts = getSortedPostsData()
   return {
     props: {
-      allPostsData,
+      posts,
     },
   }
 }
