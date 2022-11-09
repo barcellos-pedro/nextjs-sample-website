@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { name } from '../layout/layout'
 import utilStyles from '../../styles/utils.module.css'
 
-export default function HomeHeader() {
+export default function Header() {
   return (
     <>
       <Image
