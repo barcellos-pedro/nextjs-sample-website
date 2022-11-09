@@ -1,8 +1,7 @@
 import Head from 'next/head'
 
 import styles from './layout.module.css'
-import HomeHeader from '../home-header/home-header'
-import PostHeader from '../post-header/post-header'
+import Header from '../header/header'
 import BackToHome from '../back-to-home/back-to-home'
 
 export const name = 'Pedro Reis'
@@ -21,7 +20,7 @@ export default function Layout({ children, home }) {
 
       {/* Header */}
       <header className={styles.header}>
-        {home ? <HomeHeader /> : <PostHeader />}
+        {home && <Header />}
       </header>
 
       {/* Content */}
